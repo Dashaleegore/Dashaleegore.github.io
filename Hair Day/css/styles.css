@@ -1,0 +1,386 @@
+/* Hello, Friend :) Thank you for assessing my code. */
+
+/* This rule is for the marquee with the text line running from right to left, 
+which is for informing customers about the discount. A <marquee> tag could also be used in HTML and styled in CSS. */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* The asterisk selector is for applying style rules to the whole Home page. 
+I tried to stick to "display: flex" and not to set exact width and height of the elements, 
+however, I might want to add padding to the elements which would require "box-sizing: border-box".
+This way, the padding will be included in the total width and height of the elements. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* The body of the page is mintcream color, which contrasts well with the dark font of the text on the page.
+Here, I set the common font properties and values for the web-page. */
+body {
+  background-color: mintcream;
+  font-family: "Raleway", Helvetica, sans-serif;
+  color: #7c392a;
+  font-size: 1.05rem;
+}
+/* Headings and navigation anchors have the same properties and values. */
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+nav a {
+  font-size: 1.25rem;
+  padding: 0 0.5rem;
+}
+
+/* The header has its own properties and values set up here, the main point was to make it flexible,
+ that is why display: flex; is used here. The two child images have to stick to the far left and far right,
+ and the logo has to stay exactly in the middle. */
+
+.flexbox-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.flexbox-1 div:nth-child(1) {
+  display: flex;
+  flex: 1;
+  align-items: start;
+}
+
+.flexbox-1 div:nth-child(3) {
+  display: flex;
+  flex: 1;
+  justify-content: right;
+  align-items: end;
+}
+
+.flexbox-1 div:nth-child(2) {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The three child images of flexbox-1 would look gigantic if the width is 100%, so it had to be adjusted. */
+.flexbox-1-image img {
+  width: 50%;
+  height: auto;
+}
+
+/* The navigation panel is an unordered list without bullet points; 
+the anchors (or elements of the list) have to stretch and shrink depending on the viewport,
+so justify-content: space-around; was used not to let them stick to the viewport edges. 
+Other properties were set to place the anchors in the middle without falling on the bottom. 
+flex-wrap: wrap; was used because on smaller screens the navigation panel would look too small to click on the anchors,
+now the anchors can move one under the other and have enough visibility. */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: #aee5d8;
+  border-top: #57726c 0.1rem solid;
+  border-bottom: #57726c 0.1rem solid;
+}
+
+nav a {
+  display: flex;
+  text-decoration: none;
+  line-height: 2rem;
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #7c392a;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #57726c;
+  color: white;
+}
+
+/* The marquee could be simply done with <marquee> tag, but here is another way
+with a @keyframes rule. The property overflow: hidden; and white-space: nowrap; will 
+make the marquee a single line matching the size of the div element. */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background-color: #d0604c;
+  color: #f3dfcf;
+  padding: 0.5rem 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* The animation is bound to the @keyframes rule where from and to are given. 
+The time of showing is unlimited. */
+.marquee h1 {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+/* This divider is just for decoration. */
+.marquee-bottom {
+  background-color: #aee5d8;
+  height: 2rem;
+  border-top: #57726c 0.1rem solid;
+  border-bottom: #57726c 0.1rem solid;
+  margin-bottom: 0.5rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  justify-content: space-around;
+}
+
+.article-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* All elements in "articles" section are positioned evenly and have space on the left and right. */
+.articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* three columns */
+  grid-template-rows: auto auto; /* two rows: one for h1, one for the articles themselves */
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* The three articles have a column structure with the image on top, and text below. 
+Padding helps control the size of contents within their div elements. */
+.article-2,
+.article-3,
+.article-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+}
+
+.articles h1 {
+  grid-column: 2 / 3; /* The section heading is centered in the second column, couldn't do it with flex
+                          because the heading was squeezing in the row of articles. */
+  text-align: center;
+}
+
+.article-2 {
+  grid-column: 1; /* The article takes the first column of the second row. */
+}
+
+.article-3 {
+  grid-column: 2; /* The article takes the second column of the second row.*/
+}
+
+.article-4 {
+  grid-column: 3; /* The article takes the third column of the second row. */
+}
+
+.article-1-text,
+.article-2-text,
+.article-3-text,
+.article-4-text {
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.article-2-text h2,
+.article-3-text h2,
+.article-4-text h2 {
+  padding: 1rem 0;
+}
+
+.article-1-text a,
+.article-2-text a,
+.article-3-text a,
+.article-4-text a {
+  color: #7c392a;
+  transition: background-color 0.3s ease;
+}
+
+.article-1-text a:hover,
+.article-2-text a:hover,
+.article-3-text a:hover,
+.article-4-text a:hover {
+  color: #d0604c;
+}
+
+.article-1 img {
+  display: inline-block;
+  width: 15%;
+  height: auto;
+}
+
+.left-image {
+  float: left;
+}
+
+.right-image {
+  float: right;
+}
+
+.article-2 img,
+.article-3 img,
+.article-4 img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #aee5d8;
+  height: 3rem;
+  width: 100%;
+  border-top: #57726c 0.1rem solid;
+  border-bottom: #57726c 0.1rem solid;
+}
+
+footer div {
+  flex: 1;
+  text-align: center;
+}
+
+/* These are body elements of other web-pages of the future website. */
+.services,
+.book,
+.about {
+  margin: 0;
+  background-color: #aee5d8;
+  font-family: Arial, sans-serif;
+  color: #57726c;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 15rem 20rem;
+}
+
+/* The placeholder div element has the navigation panel and an information about the future website. */
+.placeholder {
+  border: 8px solid #d0604c;
+  background-color: #f3dfcf;
+  border-radius: 20px;
+  max-width: 100%;
+  box-shadow: 0 0 20px rgba(87, 114, 108, 0.2);
+}
+
+.placeholder h1 {
+  padding: 3rem 2rem;
+}
+
+/* I used several @media rules because in DevTools the layout wasn't responsive,
+particularly the fonts. Large text looked strange on a small screen, especally taking into account that 
+the header part was relatively proportional (for this purpose, I set the width of the images to be 30% or 80%).*/
+
+/* This @media rule is for small mobile screens up to 600px. */
+
+@media (max-width: 600px),
+  (min-width: 601px) and (max-width: 900px),
+  (min-width: 901px) and (max-width: 1200px) {
+  .hero,
+  .articles {
+    display: flex; /* The flexible layout. */
+    flex-direction: column; /* The articles within the section are in one column to look readable. */
+    align-items: center;
+  }
+
+  .article-1 img {
+    display: inline-block;
+    width: 30%; /* The width of the images is changed from 15% to 30% because 15% in a small viewport
+                  looks tiny and not balanced compared to the text of the article. */
+    height: auto;
+  }
+
+  .article-1,
+  .article-2,
+  .article-3,
+  .article-4 {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
+    width: 25rem; /* The set width controls the size of the contents, 
+                      otherwise the image of an article looks enormous. 
+                      The property width in img doesn't work for that purpose because once the screen is smaller,
+                        the img becomes tiny. */
+
+    height: auto;
+  }
+
+  .article-2 img,
+  .article-3 img,
+  .article-4 img {
+    display: inline-block;
+    width: 80%;
+    height: auto;
+  }
+
+  .article-1-text,
+  .article-2-text,
+  .article-3-text,
+  .article-4-text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* This @media rule is for screens from 1200px and up. */
+@media (min-width: 1201px) {
+  body {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    padding-bottom: 0.5rem;
+  }
+  nav a {
+    font-size: 2rem;
+  }
+
+  .article-1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .article-1-text {
+    padding: 1rem 1rem;
+    text-align: center;
+  }
+}
